@@ -1,0 +1,399 @@
+@import url('highlight.js/styles/github.css');
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────────
+   Aether OS — global styles
+   Sky-blue Aero glass, Geist body, Instrument Serif accent
+   ────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Sky palette → tailwind classes (bg-sky-500 etc.) */
+  --color-sky-100: #E0F2FE;
+  --color-sky-200: #BAE6FD;
+  --color-sky-300: #7DD3FC;
+  --color-sky-400: #38BDF8;
+  --color-sky-500: #0EA5E9;
+  --color-sky-600: #0284C7;
+  --color-sky-700: #0369A1;
+  --color-sky-800: #075985;
+  --color-sky-900: #0C4A6E;
+
+  /* Semantic */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger:  #EF4444;
+
+  /* Ink */
+  --color-ink-primary:   var(--ink-primary);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-tertiary:  var(--ink-tertiary);
+
+  /* Surfaces */
+  --color-glass:         var(--glass-bg);
+  --color-glass-strong:  var(--glass-bg-strong);
+  --color-glass-soft:    var(--glass-bg-soft);
+  --color-divider:       var(--divider);
+  --color-hover:         var(--hover-bg);
+  --color-desktop:       var(--desktop);
+
+  /* Radii */
+  --radius-window: 16px;
+  --radius-card: 18px;
+
+  /* Fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+/* ── Defaults (light) ───────────────────────────────────────────── */
+:root {
+  --sky-500: #0EA5E9;
+  --sky-600: #0284C7;
+  --sky-700: #0369A1;
+
+  --desktop: #EEF1F5;
+  --glass-bg: rgba(255,255,255,0.32);
+  --glass-bg-strong: rgba(255,255,255,0.50);
+  --glass-bg-soft: rgba(255,255,255,0.22);
+  --glass-border: rgba(255,255,255,0.55);
+  --glass-border-bright: rgba(255,255,255,0.85);
+  --glass-highlight: rgba(255,255,255,0.95);
+  --logo-mask-bg: rgba(255, 255, 255, 0.4);
+  --logo-mask-border: rgba(0, 0, 0, 0.06);
+  --divider: rgba(15,30,60,0.08);
+  --hover-bg: rgba(15,30,60,0.06);
+  --hover-bg-strong: rgba(15,30,60,0.10);
+
+  --ink-primary: rgba(15,30,60,0.94);
+  --ink-secondary: rgba(15,30,60,0.62);
+  --ink-tertiary: rgba(15,30,60,0.40);
+
+  --shadow-soft:
+    0 28px 60px -16px rgba(30, 80, 160, 0.22),
+    0 6px 16px rgba(30, 80, 160, 0.08),
+    0 1px 2px rgba(30, 80, 160, 0.06);
+  --shadow-window:
+    0 32px 80px -20px rgba(15, 40, 100, 0.35),
+    0 12px 28px rgba(15, 40, 100, 0.18),
+    0 2px 6px rgba(15, 40, 100, 0.08);
+  --shadow-pop: 0 12px 32px rgba(30, 80, 160, 0.18);
+  --shadow-dock:
+    0 18px 40px -10px rgba(15, 40, 100, 0.32),
+    0 6px 14px rgba(15, 40, 100, 0.12);
+}
+
+[data-theme='dark'] {
+  --desktop: #0B1220;
+  --glass-bg: rgba(20,28,44,0.42);
+  --glass-bg-strong: rgba(28,38,58,0.62);
+  --glass-bg-soft: rgba(20,28,44,0.28);
+  --glass-border: rgba(255,255,255,0.10);
+  --glass-border-bright: rgba(255,255,255,0.16);
+  --glass-highlight: rgba(255,255,255,0.08);
+  --logo-mask-bg: rgba(0, 0, 0, 0.4);
+  --logo-mask-border: rgba(255, 255, 255, 0.06);
+  --divider: rgba(255,255,255,0.06);
+  --hover-bg: rgba(255,255,255,0.06);
+  --hover-bg-strong: rgba(255,255,255,0.10);
+
+  --ink-primary: rgba(240,246,255,0.94);
+  --ink-secondary: rgba(200,212,232,0.62);
+  --ink-tertiary: rgba(170,182,205,0.42);
+
+  --shadow-soft:
+    0 28px 60px -16px rgba(0,0,0,0.55),
+    0 6px 16px rgba(0,0,0,0.35),
+    0 1px 2px rgba(0,0,0,0.25);
+  --shadow-window:
+    0 32px 80px -20px rgba(0,0,0,0.7),
+    0 12px 28px rgba(0,0,0,0.45),
+    0 2px 6px rgba(0,0,0,0.25);
+  --shadow-pop: 0 12px 32px rgba(0,0,0,0.45);
+  --shadow-dock:
+    0 18px 40px -10px rgba(0,0,0,0.65),
+    0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* ── Base ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: var(--base-font-size, 14px);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--ink-primary);
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--desktop);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+body {
+  overflow: hidden; /* desktop OS: no scroll on body, windows scroll internally */
+  cursor: default;
+}
+
+em.serif, .font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+/* ── Glass primitives ───────────────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────────────
+   Glass primitives intentionally live in components/theme/glassCss.ts
+   and are injected via a <style> tag in app/layout.tsx — see comment
+   in that file. Doing so bypasses lightningcss prefix collapsing that
+   strips the non-prefixed `backdrop-filter` and breaks the effect in
+   Chrome/Edge.
+   ────────────────────────────────────────────────────────────────── */
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes windowAppear {
+  from { opacity: 0; transform: translateY(22px) scale(0.965); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes dockIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes messageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(60px, -20px); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-70px, -30px); }
+}
+@keyframes drift-c {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-40px, 30px); }
+}
+@keyframes livePulse {
+  0%, 100% { box-shadow: 0 0 3px rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 9px rgba(34, 197, 94, 0.75); }
+}
+@keyframes typingPulse {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+@keyframes blink {
+  50% { opacity: 0.25; }
+}
+@keyframes caretPulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; box-shadow: 0 0 8px var(--sky-400); }
+}
+.animate-caret-pulse {
+  animation: caretPulse 0.9s ease-in-out infinite;
+}
+@keyframes dockBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+.animate-slide-down { animation: slideDown 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-rise       { animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-window     { animation: windowAppear 0.55s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-dock-in    { animation: dockIn 0.95s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-message-in { animation: messageIn 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Dock tooltip (sibling-of-hover) ───────────────────────────── */
+[data-dock-item]:hover .dock-tooltip,
+[data-dock-item]:focus-visible .dock-tooltip {
+  opacity: 1 !important;
+  transform: translate(-50%, 0) !important;
+}
+
+/* (spotlight-pill hover + composer-shell live in glassCss.ts to bypass
+   lightningcss backdrop-filter stripping) */
+
+/* ── Live dot ──────────────────────────────────────────────────── */
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.55);
+  animation: livePulse 2.4s ease-in-out infinite;
+}
+
+/* ── Inline code ───────────────────────────────────────────────── */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: rgba(15, 30, 60, 0.07);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--sky-700);
+  letter-spacing: -0.005em;
+}
+[data-theme='dark'] code {
+  background: rgba(255,255,255,0.08);
+  color: var(--sky-300);
+}
+
+/* ── Markdown body (in chat bubbles) ───────────────────────────── */
+.markdown-body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: inherit;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.markdown-body p { margin: 0.4em 0; }
+.markdown-body p:first-child { margin-top: 0; }
+.markdown-body p:last-child { margin-bottom: 0; }
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  font-weight: 600;
+  margin: 0.6em 0 0.3em;
+  letter-spacing: -0.01em;
+}
+.markdown-body h1 { font-size: 1.4em; }
+.markdown-body h2 { font-size: 1.2em; }
+.markdown-body h3 { font-size: 1.05em; }
+.markdown-body ul, .markdown-body ol {
+  padding-left: 1.4em;
+  margin: 0.4em 0;
+}
+.markdown-body li { margin: 0.2em 0; }
+.markdown-body pre {
+  background: rgba(15, 30, 60, 0.07);
+  border-radius: 10px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  margin: 0.6em 0;
+}
+[data-theme='dark'] .markdown-body pre {
+  background: rgba(255,255,255,0.06);
+}
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  border-radius: 0;
+}
+.markdown-body blockquote {
+  border-left: 3px solid var(--sky-400);
+  padding-left: 12px;
+  color: var(--ink-secondary);
+  margin: 0.5em 0;
+}
+.markdown-body a {
+  color: var(--sky-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.markdown-body table {
+  border-collapse: collapse;
+  margin: 0.6em 0;
+}
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--divider);
+  padding: 6px 10px;
+}
+.markdown-body th {
+  background: var(--hover-bg);
+  font-weight: 600;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(30, 60, 120, 0.18);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 60, 120, 0.32);
+  background-clip: padding-box;
+}
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  background-clip: padding-box;
+}
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.22);
+  background-clip: padding-box;
+}
+
+/* Prevent layout shift when scrollbars appear */
+.overflow-y-auto,
+.overflow-y-scroll {
+  scrollbar-gutter: stable;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Focus rings — Sky-themed ──────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--sky-400);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+button:focus-visible, a:focus-visible {
+  outline-offset: 3px;
+}
+
+/* ── Selection ─────────────────────────────────────────────────── */
+::selection {
+  background: rgba(56, 189, 248, 0.32);
+  color: var(--ink-primary);
+}
+
+/* ── View Transitions — Cinematic Cross-Fade ─────────────────────── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Unified Menubar Transitions ────────────────────────────────── */
+.menubar-flat,
+.menubar-flat button,
+.menubar-flat span,
+.menubar-flat svg {
+  transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.12s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
