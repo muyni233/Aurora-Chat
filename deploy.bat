@@ -1,7 +1,8 @@
 @echo off
-rem Aurora-Chat 部署启动器 — 转发至 scripts\deploy.ps1。
-rem 绕过执行策略，使全新安装的 Windows 无需手动设置 Set-ExecutionPolicy。
-rem 所有参数均透传，例如：
+cd /d "%~dp0"
+chcp 65001 >nul 2>nul
+rem Bypass ExecutionPolicy so fresh Windows installs work without manual setup.
+rem All arguments are forwarded, e.g.:
 rem   deploy.bat -BackendPort 9000 -FrontendPort 8080
 rem   deploy.bat -SkipBuild -Force
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\deploy.ps1" %*

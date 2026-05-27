@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Aurora-Chat 生产环境启动器。
 

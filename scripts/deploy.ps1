@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Aurora-Chat 一键部署脚本（Windows）。
 

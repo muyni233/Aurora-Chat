@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Aurora-Chat 开发环境启动器。
 

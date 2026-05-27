@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Aurora-Chat 一键卸载脚本（Windows）。
 
